@@ -2,13 +2,13 @@
 #include "olcPixelGameEngine.h"
 #include <string>
 #define ALIVE 1
-class CAutomata : public olc::PixelGameEngine {
+class CGameOfLife : public olc::PixelGameEngine {
 public:
   int *output;
   int *state;
   int size;
 
-  CAutomata() { sAppName = "CAutomata"; }
+  CGameOfLife() { sAppName = "CGameOfLife"; }
 
   bool OnUserCreate() override {
     size = ScreenWidth() * ScreenHeight();
@@ -64,7 +64,7 @@ public:
   }
 };
 int main() {
-  CAutomata life;
+  CGameOfLife life;
   if (life.Construct(640, 480, 4, 4))
     life.Start();
   return 0;

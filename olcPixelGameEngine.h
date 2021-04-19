@@ -119,7 +119,7 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~
 	Emscripten compiler will turn your awesome C++ PixelGameEngine project into WASM!
 	This means you can run your application in teh browser, great for distributing
-	and submission in to jams and things! It's a bit new at the moment. 
+	and submission in to jams and things! It's a bit new at the moment.
 
 	em++ -std=c++17 -O2 -s ALLOW_MEMORY_GROWTH=1 -s MAX_WEBGL_VERSION=2 -s MIN_WEBGL_VERSION=2 -s USE_LIBPNG=1 ./YourSource.cpp -o pge.html
 
@@ -149,9 +149,9 @@
 	#define OLC_PGE_APPLICATION
 	#include "olcPixelGameEngine.h"
 
-	That's all it should include. You can also include PGEX includes and 
-	defines in here too. With this in place, you dont need to 
-	#define OLC_PGE_APPLICATION anywhere, and can simply include this 
+	That's all it should include. You can also include PGEX includes and
+	defines in here too. With this in place, you dont need to
+	#define OLC_PGE_APPLICATION anywhere, and can simply include this
 	header file as an when you need to.
 
 
@@ -168,8 +168,8 @@
 	Thanks
 	~~~~~~
 	I'd like to extend thanks to Ian McKay, Bispoo, Eremiell, slavka, gurkanctn, Phantim,
-	IProgramInCPP, JackOJC, KrossX, Huhlig, Dragoneye, Appa, JustinRichardsMusic, SliceNDice, 
-	dandistine,	Ralakus, Gorbit99, raoul, joshinils, benedani, Moros1138, Alexio, SaladinAkara 
+	IProgramInCPP, JackOJC, KrossX, Huhlig, Dragoneye, Appa, JustinRichardsMusic, SliceNDice,
+	dandistine,	Ralakus, Gorbit99, raoul, joshinils, benedani, Moros1138, Alexio, SaladinAkara
 	& MagetzUb for advice, ideas and testing, and I'd like to extend my appreciation to the
 	230K YouTube followers,	80+ Patreons and 10K Discord server members who give me
 	the motivation to keep going with all this :D
@@ -254,12 +254,12 @@
 		  +Wireframe Decal Mode - For debug overlays
 	2.11: Made PGEX hooks optional - (provide true to super constructor)
 	2.12: Fix for MinGW compiler non-compliance :( - why is its sdk structure different?? why???
-	2.13: +GetFontSprite() - allows access to font data	 
+	2.13: +GetFontSprite() - allows access to font data
 	2.14: Fix WIN32 Definition reshuffle
 		  Fix DrawPartialDecal() - messed up dimension during renderer experiment, didnt remove junk code, thanks Alexio
 		  Fix? Strange error regarding GDI+ Image Loader not knowing about COM, SDK change?
 	2.15: Big Reformat
-		  +WASM Platform (via Emscripten) - Big Thanks to OLC Community - See Platform for details		  
+		  +WASM Platform (via Emscripten) - Big Thanks to OLC Community - See Platform for details
 		  +Sample Mode for Decals
 		  +Made olc_ConfigureSystem() accessible
 		  +Added OLC_----_CUSTOM_EX for externalised platforms, renderers and image loaders
@@ -268,7 +268,7 @@
 		  -Deprecating SaveToPGESprFile()
 		  Fix Pixel -= operator (thanks Au Lit)
 
-		  
+
     !! Apple Platforms will not see these updates immediately - Sorry, I dont have a mac to test... !!
 	!!   Volunteers willing to help appreciated, though PRs are manually integrated with credit     !!
 */
@@ -440,7 +440,7 @@ int main()
 // O------------------------------------------------------------------------------O
 // | PLATFORM-SPECIFIC DEPENDENCIES                                               |
 // O------------------------------------------------------------------------------O
-#if defined(OLC_PLATFORM_WINAPI)	
+#if defined(OLC_PLATFORM_WINAPI)
 	#define _WINSOCKAPI_ // Thanks Cornchipss
 		#if !defined(VC_EXTRALEAN)
 		#define VC_EXTRALEAN
@@ -620,7 +620,7 @@ namespace olc
 		operator v2d_generic<double>() const { return { static_cast<double>(this->x), static_cast<double>(this->y) }; }
 	};
 
-	// Note: joshinils has some good suggestions here, but they are complicated to implement at this moment, 
+	// Note: joshinils has some good suggestions here, but they are complicated to implement at this moment,
 	// however they will appear in a future version of PGE
 	template<class T> inline v2d_generic<T> operator * (const float& lhs, const v2d_generic<T>& rhs)
 	{ return v2d_generic<T>((T)(lhs * (float)rhs.x), (T)(lhs * (float)rhs.y)); }
@@ -649,7 +649,7 @@ namespace olc
 
 
 
-	
+
 
 
 	// O------------------------------------------------------------------------------O
@@ -1012,7 +1012,7 @@ namespace olc
 		void GradientFillRectDecal(const olc::vf2d& pos, const olc::vf2d& size, const olc::Pixel colTL, const olc::Pixel colBL, const olc::Pixel colBR, const olc::Pixel colTR);
 		// Draws an arbitrary convex textured polygon using GPU
 		void DrawPolygonDecal(olc::Decal* decal, const std::vector<olc::vf2d>& pos, const std::vector<olc::vf2d>& uv, const olc::Pixel tint = olc::WHITE);
-				
+
 		// Clears entire draw target to Pixel
 		void Clear(Pixel p);
 		// Clears the rendering back buffer
@@ -1059,7 +1059,7 @@ namespace olc
 		std::chrono::time_point<std::chrono::system_clock> m_tp1, m_tp2;
 		std::vector<olc::vi2d> vFontSpacing;
 
-		// State of keyboard		
+		// State of keyboard
 		bool		pKeyNewState[256] = { 0 };
 		bool		pKeyOldState[256] = { 0 };
 		HWButton	pKeyboardState[256] = { 0 };
@@ -1157,7 +1157,7 @@ namespace olc
 	{ r = 0; g = 0; b = 0; a = nDefaultAlpha; }
 
 	Pixel::Pixel(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
-	{ n = red | (green << 8) | (blue << 16) | (alpha << 24); } // Thanks jarekpelczar 
+	{ n = red | (green << 8) | (blue << 16) | (alpha << 24); } // Thanks jarekpelczar
 
 	Pixel::Pixel(uint32_t p)
 	{ n = p; }
@@ -1256,7 +1256,7 @@ namespace olc
 	{ LoadFromFile(sImageFile, pack); }
 
 	Sprite::Sprite(int32_t w, int32_t h)
-	{		
+	{
 		width = w;		height = h;
 		pColData.resize(width * height);
 		pColData.resize(width * height, nDefaultPixel);
@@ -1486,7 +1486,7 @@ namespace olc
 
 
 	//=============================================================
-	// Resource Packs - Allows you to store files in one large 
+	// Resource Packs - Allows you to store files in one large
 	// scrambled file - Thanks MaGetzUb for debugging a null char in std::stringstream bug
 	ResourceBuffer::ResourceBuffer(std::ifstream& ifs, uint32_t offset, uint32_t size)
 	{
@@ -1506,7 +1506,7 @@ namespace olc
 		{
 			sResourceFile e;
 			e.nSize = (uint32_t)_gfs::file_size(file);
-			e.nOffset = 0; // Unknown at this stage			
+			e.nOffset = 0; // Unknown at this stage
 			mapFiles[file] = e;
 			return true;
 		}
@@ -2785,7 +2785,7 @@ namespace olc
 
 	bool PixelGameEngine::OnUserDestroy()
 	{ return true; }
-	
+
 	void PixelGameEngine::olc_UpdateViewport()
 	{
 		int32_t ww = vScreenSize.x * vPixelSize.x;
@@ -3009,7 +3009,7 @@ namespace olc
 		{
 			nLastFPS = nFrameCount;
 			fFrameTimer -= 1.0f;
-			std::string sTitle = "OneLoneCoder.com - Pixel Game Engine - " + sAppName + " - FPS: " + std::to_string(nFrameCount);
+			std::string sTitle = "rdwilson.xyz - " + sAppName + " - FPS: " + std::to_string(nFrameCount);
 			platform->SetWindowTitle(sTitle);
 			nFrameCount = 0;
 		}
@@ -3070,7 +3070,7 @@ namespace olc
 	void PixelGameEngine::pgex_Register(olc::PGEX* pgex)
 	{
 		if (std::find(vExtensions.begin(), vExtensions.end(), pgex) == vExtensions.end())
-			vExtensions.push_back(pgex);			
+			vExtensions.push_back(pgex);
 	}
 
 
@@ -3088,7 +3088,7 @@ namespace olc
 	olc::PixelGameEngine* olc::Renderer::ptrPGE = nullptr;
 	std::unique_ptr<ImageLoader> olc::Sprite::loader = nullptr;
 };
-#pragma endregion 
+#pragma endregion
 
 // O------------------------------------------------------------------------------O
 // | olcPixelGameEngine Renderers - the draw-y bits                               |
@@ -3226,7 +3226,7 @@ namespace olc
 
 			if (glSwapIntervalEXT != nullptr && !bVSYNC)
 				glSwapIntervalEXT(olc_Display, *olc_Window, 0);
-#endif		
+#endif
 
 #if defined(OLC_PLATFORM_GLUT)
 			mFullScreen = bFullScreen;
@@ -3267,11 +3267,11 @@ namespace olc
 #if defined(OLC_PLATFORM_WINAPI)
 			SwapBuffers(glDeviceContext);
 			if (bSync) DwmFlush(); // Woooohooooooo!!!! SMOOOOOOOTH!
-#endif	
+#endif
 
 #if defined(OLC_PLATFORM_X11)
 			X11::glXSwapBuffers(olc_Display, *olc_Window);
-#endif		
+#endif
 
 #if defined(OLC_PLATFORM_GLUT)
 			glutSwapBuffers();
@@ -3442,7 +3442,7 @@ namespace olc
 	#include <gl/GL.h>
 	#if !defined(__MINGW32__)
 		#pragma comment(lib, "Dwmapi.lib")
-	#endif		
+	#endif
 	typedef void __stdcall locSwapInterval_t(GLsizei n);
 	typedef HDC glDeviceContext_t;
 	typedef HGLRC glRenderContext_t;
@@ -3462,7 +3462,7 @@ namespace olc
 	typedef int(locSwapInterval_t)(X11::Display* dpy, X11::GLXDrawable drawable, int interval);
 	typedef X11::GLXContext glDeviceContext_t;
 	typedef X11::GLXContext glRenderContext_t;
-	#define CALLSTYLE 
+	#define CALLSTYLE
 	#define OGL_LOAD(t, n) (t*)glXGetProcAddress((unsigned char*)#n);
 #endif
 
@@ -3647,7 +3647,7 @@ namespace olc
 
 			if (locSwapInterval != nullptr && !bVSYNC)
 				locSwapInterval(olc_Display, *olc_Window, 0);
-#endif		
+#endif
 
 #if defined(OLC_PLATFORM_EMSCRIPTEN)
 			EGLint const attribute_list[] = { EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_ALPHA_SIZE, 8, EGL_NONE };
@@ -3793,11 +3793,11 @@ namespace olc
 #if defined(OLC_PLATFORM_WINAPI)
 			SwapBuffers(glDeviceContext);
 			if (bSync) DwmFlush(); // Woooohooooooo!!!! SMOOOOOOOTH!
-#endif	
+#endif
 
 #if defined(OLC_PLATFORM_X11)
 			X11::glXSwapBuffers(olc_Display, *olc_Window);
-#endif		
+#endif
 
 #if defined(OLC_PLATFORM_GLUT)
 			glutSwapBuffers();
@@ -3992,13 +3992,13 @@ namespace olc
 	{
 	public:
 		GDIPlusStartup()
-		{			
+		{
 			Gdiplus::GdiplusStartupInput startupInput;
 			GdiplusStartup(&token, &startupInput, NULL);
 		}
 
 		ULONG_PTR	token;
-		
+
 		~GDIPlusStartup()
 		{
 			// Well, MarcusTU thought this was important :D
@@ -4213,7 +4213,7 @@ namespace olc
 // MIT License - Copyright(c) 2017 Sean Barrett
 
 // Note you need to download the above file into your project folder, and
-// #define OLC_IMAGE_STB 
+// #define OLC_IMAGE_STB
 // #define OLC_PGE_APPLICATION
 // #include "olcPixelGameEngine.h"
 
@@ -4482,7 +4482,7 @@ namespace olc
 // O------------------------------------------------------------------------------O
 // | END PLATFORM: MICROSOFT WINDOWS XP, VISTA, 7, 8, 10                          |
 // O------------------------------------------------------------------------------O
-#pragma endregion 
+#pragma endregion
 
 #pragma region platform_linux
 // O------------------------------------------------------------------------------O
@@ -4631,7 +4631,7 @@ namespace olc
 			mapKeys[XK_numbersign] = Key::OEM_8;	// miscellaneous characters. Varies by keyboard. I believe this to be the '#~' key on UK keyboards
 			mapKeys[XK_equal] = Key::EQUALS;		// the '+' key on any keyboard
 			mapKeys[XK_comma] = Key::COMMA;			// the comma key on any keyboard
-			mapKeys[XK_minus] = Key::MINUS;			// the minus key on any keyboard			
+			mapKeys[XK_minus] = Key::MINUS;			// the minus key on any keyboard
 
 			mapKeys[XK_Caps_Lock] = Key::CAPS_LOCK;
 
@@ -4993,7 +4993,7 @@ namespace olc {
 // O------------------------------------------------------------------------------O
 // | END PLATFORM: GLUT                                                           |
 // O------------------------------------------------------------------------------O
-#pragma endregion 
+#pragma endregion
 
 
 #pragma region platform_emscripten
@@ -5002,7 +5002,7 @@ namespace olc {
 // O------------------------------------------------------------------------------O
 
 //
-//	Firstly a big mega thank you to members of the OLC Community for sorting this 
+//	Firstly a big mega thank you to members of the OLC Community for sorting this
 //	out. Making a browser compatible version has been a priority for quite some
 //	time, but I lacked the expertise to do it. This awesome feature is possible
 //	because a group of former strangers got together and formed friendships over
@@ -5018,7 +5018,7 @@ namespace olc {
 #include <emscripten/html5.h>
 #include <emscripten/key_codes.h>
 
-extern "C" 
+extern "C"
 {
 	EMSCRIPTEN_KEEPALIVE inline int olc_OnPageUnload()
 	{ olc::platform->ApplicationCleanUp(); return 0; }
@@ -5030,10 +5030,10 @@ namespace olc
 	{
 	public:
 
-		virtual olc::rcode ApplicationStartUp() override 
+		virtual olc::rcode ApplicationStartUp() override
 		{ return olc::rcode::OK; }
 
-		virtual olc::rcode ApplicationCleanUp() override 
+		virtual olc::rcode ApplicationCleanUp() override
 		{ ThreadCleanUp(); return olc::rcode::OK; }
 
 		virtual olc::rcode ThreadStartUp() override
@@ -5115,7 +5115,7 @@ namespace olc
 			// Canvas Focus Callbacks
 			emscripten_set_blur_callback("#canvas", 0, 1, focus_callback);
 			emscripten_set_focus_callback("#canvas", 0, 1, focus_callback);
-			
+
 #pragma warning disable format
 			EM_ASM( window.onunload = Module._olc_OnPageUnload; );
 
@@ -5130,7 +5130,7 @@ namespace olc
 			//
 			//	Wake up people! Of course theres a spoon. There has to be to keep feeding
 			//	the giant web baby.
-			
+
 
 			// Fullscreen and Resize Observers
 			EM_ASM({
@@ -5141,7 +5141,7 @@ namespace olc
 			// width / height = aspect ratio
 			Module._olc_WindowAspectRatio = $0 / $1;
 			Module.canvas.parentNode.addEventListener("resize", (e) =>  {
-				
+
 				if (e.defaultPrevented) { e.stopPropagation(); 	return;	}
 				var viewWidth = e.detail.width;
 				var viewHeight = e.detail.width / Module._olc_WindowAspectRatio;
@@ -5150,7 +5150,7 @@ namespace olc
 					viewHeight = e.detail.height;
 					viewWidth = e.detail.height * Module._olc_WindowAspectRatio;
 				}
-					
+
 				if (Module.canvas.parentNode.className == 'emscripten_border')
 					Module.canvas.parentNode.style.cssText = Module._olc_EmscriptenShellCss + " width: " + viewWidth.toString() + "px; height: " + viewHeight.toString() + "px;";
 
@@ -5158,7 +5158,7 @@ namespace olc
 				Module.canvas.setAttribute("height", viewHeight);
 
 				if (document.fullscreenElement != null)
-				{						
+				{
 					var top = (e.detail.height - viewHeight) / 2;
 					var left = (e.detail.width - viewWidth) / 2;
 					Module.canvas.style.position = "fixed";
@@ -5180,7 +5180,7 @@ namespace olc
 			Module._olc_ResizeCanvas = () =>
 			{
 				// yes, we still have to wait, sigh..
-				setTimeout(() => 
+				setTimeout(() =>
 				{
 					// if default template, stretch width as well
 					if (Module.canvas.parentNode.className == 'emscripten_border')
@@ -5190,7 +5190,7 @@ namespace olc
 					Module.canvas.style.cssText = "width: 100%; height: 100%; outline: none;";
 
 					// setup custom resize event
-					var resizeEvent = new CustomEvent('resize', 
+					var resizeEvent = new CustomEvent('resize',
 					{
 						detail: {
 							width: Module.canvas.clientWidth,
@@ -5222,7 +5222,7 @@ namespace olc
 			var resizeObserver = new ResizeObserver((entries) => {Module._olc_ResizeCanvas();}).observe(Module.canvas.parentNode);
 
 			// observe and react to changes that occur when entering/exiting fullscreen
-			var mutationObserver = new MutationObserver((mutationsList, observer) => 
+			var mutationObserver = new MutationObserver((mutationsList, observer) =>
 			{
 				// a change has occurred, let's check them out!
 				for (var i = 0; i < mutationsList.length; i++)
@@ -5235,7 +5235,7 @@ namespace olc
 							Module._olc_ResizeCanvas();
 					}
 				}
-			}).observe(Module.canvas.parentNode, 
+			}).observe(Module.canvas.parentNode,
 			{
 				attributes: false,
 				childList : true,
@@ -5257,7 +5257,7 @@ namespace olc
 		}
 
 		//TY Gorbit
-		static EM_BOOL focus_callback(int eventType, const EmscriptenFocusEvent* focusEvent, void* userData) 
+		static EM_BOOL focus_callback(int eventType, const EmscriptenFocusEvent* focusEvent, void* userData)
 		{
 			if (eventType == EMSCRIPTEN_EVENT_BLUR)
 			{
@@ -5365,7 +5365,7 @@ namespace olc
 		virtual olc::rcode SetWindowTitle(const std::string& s) override
 		{ emscripten_set_window_title(s.c_str()); return olc::OK; }
 
-		virtual olc::rcode StartSystemEventLoop() override 
+		virtual olc::rcode StartSystemEventLoop() override
 		{ return olc::OK; }
 
 		virtual olc::rcode HandleSystemEvent() override
@@ -5425,7 +5425,7 @@ namespace olc
 	}
 }
 
-extern "C" 
+extern "C"
 {
 	EMSCRIPTEN_KEEPALIVE inline void olc_PGE_UpdateWindowSize(int width, int height)
 	{
